@@ -215,30 +215,12 @@
   const orbit = '<div class="orbit" aria-hidden="true"><svg viewBox="0 0 400 400"><g class="spin"><circle cx="200" cy="200" r="190" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1" stroke-dasharray="2 7"/></g><g class="spin rev"><circle cx="200" cy="200" r="150" fill="none" stroke="#009BE3" stroke-width="1.2" stroke-dasharray="70 240" stroke-linecap="round"/></g><circle cx="200" cy="200" r="112" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1"/><g class="dot"><circle cx="200" cy="10" r="4.5" fill="#009BE3"/><circle cx="200" cy="10" r="10" fill="none" stroke="rgba(0,155,227,.45)"/></g></svg></div>';
   $$('.home-hero, .page-hero').forEach(h=>{
     h.insertAdjacentHTML('beforeend', orbit);
-    if (h.classList.contains('home-hero')) h.insertAdjacentHTML('beforeend','<div class="glow" aria-hidden="true"></div><div class="sparkles" aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i><i>✦</i></div>');
+    if (h.classList.contains('home-hero')) h.insertAdjacentHTML('beforeend','<div class="glow" aria-hidden="true"></div>');
   });
   const heroBg = $('.home-hero .bgimg');
   if (heroBg && fine && !reduce) {
     $('.home-hero').addEventListener('pointermove',e=>{ const x=(e.clientX/innerWidth-.5)*-18, y=(e.clientY/innerHeight-.5)*-12; heroBg.style.translate=`${x}px ${y}px`; });
   }
-
-  // Magnetic + ripple buttons
-  $$('.btn').forEach(b=>{
-    if (fine && !reduce) {
-      b.addEventListener('pointermove',e=>{ const r=b.getBoundingClientRect(); b.style.setProperty('--mx',((e.clientX-r.left-r.width/2)*.18)+'px'); b.style.setProperty('--my',((e.clientY-r.top-r.height/2)*.28)+'px'); });
-      b.addEventListener('pointerleave',()=>{ b.style.setProperty('--mx','0px'); b.style.setProperty('--my','0px'); });
-    }
-    b.addEventListener('pointerdown',e=>{ const r=b.getBoundingClientRect(); const d=Math.max(r.width,r.height)*2.2; const s=document.createElement('span'); s.className='rip';
-      s.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`; b.appendChild(s); setTimeout(()=>s.remove(),750); });
-  });
-
-  // 3D tilt on course cards
-  if (fine && !reduce) $$('.course').forEach(c=>{
-    c.addEventListener('pointermove',e=>{ const r=c.getBoundingClientRect(); const px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
-      c.style.transition='transform .15s linear, box-shadow .6s'; c.style.transform=`perspective(900px) rotateX(${(.5-py)*6}deg) rotateY(${(px-.5)*8}deg) translateY(-8px)`;
-      c.style.setProperty('--gx',(px*100)+'%'); c.style.setProperty('--gy',(py*100)+'%'); });
-    c.addEventListener('pointerleave',()=>{ c.style.transition='transform .7s var(--ease), box-shadow .6s'; c.style.transform=''; });
-  });
 
   // Smooth page transitions between internal pages
   if (!reduce) document.addEventListener('click',e=>{
