@@ -249,6 +249,14 @@
   });
   addEventListener('pageshow',()=>document.body.classList.remove('leaving'));
 
+  // Safety net: reveal anything already scrolled past (fast scroll, IO misses)
+  let tk=false;
+  const sweep=()=>{ tk=false; const vh=innerHeight;
+    $$('.rv:not(.in),.img-rv:not(.in),.ornament:not(.in),.steps:not(.in)').forEach(el=>{ if(el.getBoundingClientRect().top<vh*0.95) el.classList.add('in'); });
+    if(!reduce) heads.forEach(h=>{ if(!h.classList.contains('words-in')&&!h.closest('.intro-anim')&&h.getBoundingClientRect().top<vh*0.95) h.classList.add('words-in'); }); };
+  addEventListener('scroll',()=>{ if(!tk){ tk=true; requestAnimationFrame(sweep);} },{passive:true});
+  setInterval(sweep,800);
+
   /* ---------------- Page Merci ---------------- */
   const thanks = $('#thanks');
   if (thanks) {
