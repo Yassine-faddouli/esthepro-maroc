@@ -53,44 +53,53 @@
   </div>
 </header>
 <main>
-<section class="page-hero" style="padding:0">
-  <div class="wrap" style="padding:64px 0 120px;text-align:center">
+<section class="page-hero insc-hero" style="padding:0">
+  <div class="wrap" style="padding:64px 0 130px;text-align:center">
     <div class="intro-anim">
       <nav class="crumbs" style="justify-content:center"><a href="/">Accueil</a> <span>/</span> Pré-inscription</nav>
-      <h1 style="color:#fff;margin:16px auto 16px">Formulaire de <em>pré-inscription</em></h1>
-      <p class="lead" style="margin:0 auto;max-width:720px">Donnez vie à votre avenir dans l'esthétique ou la dermo-cosmétique. Remplissez ce formulaire en 2 minutes : notre conseiller pédagogique vous contacte pour vous présenter le programme et les modalités d'inscription.</p>
+      <h1 style="color:#fff;margin:6px auto 16px">Formulaire de <em>pré-inscription</em></h1>
+      <p class="lead" style="margin:0 auto;max-width:700px">Donnez vie à votre avenir dans l'esthétique ou la dermo-cosmétique. Remplissez ce formulaire : notre conseiller pédagogique vous rappelle avec le programme, le calendrier et les tarifs.</p>
+      <div class="insc-badges"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2 minutes</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> École agréée par l'État</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg> Gratuit et sans engagement</span></div>
     </div>
   </div>
 </section>
-<section style="padding-top:0;margin-top:-80px">
+<section style="padding-top:0;margin-top:-90px">
   <div class="wrap insc-grid">
     <div class="form-wrap rv z">
+      <div class="fhead">
+        <div><b>Votre pré-inscription</b><span id="fstat">Étape 1 sur 2 · choisissez une formation</span></div>
+        <span class="fpct" id="fpct">0 %</span>
+      </div>
+      <div class="fprog"><i id="fbar"></i></div>
       <form data-lead="full" novalidate>
         <fieldset class="block">
-          <legend class="f-title"><span class="num-c">1</span>Choix de formation <span style="color:var(--sky)">*</span></legend>
-          <p class="f-sub">Sélectionnez la formation qui vous intéresse.</p>
-          <div class="pick"><div class="opt"><input type="radio" name="formation" id="p1" value="Formation Esthéticienne"><label for="p1"><b>Esthéticienne</b><small>Le parcours complet pour devenir esthéticienne professionnelle.</small><em>1 an · présentiel · diplômante</em></label></div><div class="opt"><input type="radio" name="formation" id="p2" value="Formation Esthétique pour Adultes"><label for="p2"><b>Esthétique pour Adultes</b><small>Reconversion ou nouvelle compétence, sans quitter votre emploi.</small><em>6 mois · le samedi</em></label></div><div class="opt"><input type="radio" name="formation" id="p3" value="Formation Dermo-Cosmétique"><label for="p3"><b>Dermo-Cosmétique</b><small>Conseil en pharmacie et parapharmacie : peau, actifs, INCI.</small><em>100 % à distance · Zoom</em></label></div></div>
-          <label class="check unsure"><input type="radio" name="formation" value="Je ne sais pas encore"> Je ne sais pas encore, je souhaite être conseillé(e)</label>
-          <p class="group-err">Veuillez choisir une formation.</p>
+          <legend class="f-title"><span class="num-c">1</span>Quelle formation vous intéresse ?</legend>
+          <p class="f-sub">Un seul choix. Vous pourrez en parler avec votre conseiller.</p>
+          <div class="pick"><div class="opt"><input type="radio" name="formation" id="p1" value="Formation Esthéticienne"><label for="p1"><span class="pimg"><img src="https://static.wixstatic.com/media/76852a_968cc86b8a7f45a0aee6b6ff1b5486c7~mv2.webp/v1/fill/w_360,h_200,al_c,q_85,enc_auto/visage.webp" srcset="https://static.wixstatic.com/media/76852a_968cc86b8a7f45a0aee6b6ff1b5486c7~mv2.webp/v1/fill/w_360,h_200,al_c,q_85,enc_auto/visage.webp 1x, https://static.wixstatic.com/media/76852a_968cc86b8a7f45a0aee6b6ff1b5486c7~mv2.webp/v1/fill/w_720,h_400,al_c,q_85,enc_auto/visage.webp 2x" width="360" height="200" alt="Esthéticienne" loading="lazy" decoding="async" ></span><span class="ptxt"><b>Esthéticienne</b><small>Devenir esthéticienne professionnelle.</small><em>1 an · présentiel · diplôme</em></span><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span></label></div><div class="opt"><input type="radio" name="formation" id="p2" value="Formation Esthétique pour Adultes"><label for="p2"><span class="pimg"><img src="https://static.wixstatic.com/media/76852a_7fa7f368118b4a72b36291711b490cfe~mv2.webp/v1/fill/w_360,h_200,al_c,q_85,enc_auto/adulte2.webp" srcset="https://static.wixstatic.com/media/76852a_7fa7f368118b4a72b36291711b490cfe~mv2.webp/v1/fill/w_360,h_200,al_c,q_85,enc_auto/adulte2.webp 1x, https://static.wixstatic.com/media/76852a_7fa7f368118b4a72b36291711b490cfe~mv2.webp/v1/fill/w_720,h_400,al_c,q_85,enc_auto/adulte2.webp 2x" width="360" height="200" alt="Esthétique pour Adultes" loading="lazy" decoding="async" ></span><span class="ptxt"><b>Esthétique pour Adultes</b><small>Se reconvertir sans quitter son emploi.</small><em>6 mois · le samedi</em></span><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span></label></div><div class="opt"><input type="radio" name="formation" id="p3" value="Formation Dermo-Cosmétique"><label for="p3"><span class="pimg"><img src="https://static.wixstatic.com/media/76852a_2a30a33b33a64289bcf0b384c30e09d1~mv2.webp/v1/fill/w_360,h_200,al_c,q_85,enc_auto/comptoir.webp" srcset="https://static.wixstatic.com/media/76852a_2a30a33b33a64289bcf0b384c30e09d1~mv2.webp/v1/fill/w_360,h_200,al_c,q_85,enc_auto/comptoir.webp 1x, https://static.wixstatic.com/media/76852a_2a30a33b33a64289bcf0b384c30e09d1~mv2.webp/v1/fill/w_720,h_400,al_c,q_85,enc_auto/comptoir.webp 2x" width="360" height="200" alt="Dermo-Cosmétique" loading="lazy" decoding="async" ></span><span class="ptxt"><b>Dermo-Cosmétique</b><small>Conseiller en pharmacie et parapharmacie.</small><em>100 % à distance · Zoom</em></span><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span></label></div></div>
+          <label class="unsure"><input type="radio" name="formation" value="Je ne sais pas encore"><span>Je ne sais pas encore — je souhaite être conseillé(e)</span></label>
+          <p class="group-err">Choisissez une formation pour continuer.</p>
         </fieldset>
         <fieldset class="block">
-          <legend class="f-title"><span class="num-c">2</span>Vos informations</legend>
-          <p class="f-sub">Les champs marqués d'un * sont obligatoires.</p>
+          <legend class="f-title"><span class="num-c">2</span>Où pouvons-nous vous joindre ?</legend>
+          <p class="f-sub">Les champs marqués d'un <i style="color:var(--sky);font-style:normal">*</i> sont obligatoires.</p>
           <div class="grid2">
-            <div class="field"><label for="prenom">Prénom <i>*</i></label><input id="prenom" name="prenom" autocomplete="given-name" data-req><p class="err">Veuillez indiquer votre prénom.</p></div>
-            <div class="field"><label for="nom">Nom <i>*</i></label><input id="nom" name="nom" autocomplete="family-name" data-req><p class="err">Veuillez indiquer votre nom.</p></div>
-            <div class="field"><label for="ville">Ville <i>*</i></label><input id="ville" name="ville" list="villes" autocomplete="address-level2" data-req><datalist id="villes"><option value="Rabat"><option value="Salé"><option value="Témara"><option value="Kénitra"><option value="Skhirat"><option value="Casablanca"></datalist><p class="err">Veuillez indiquer votre ville.</p></div>
-            <div class="field"><label for="niveau">Niveau d'études <i>*</i></label><select id="niveau" name="niveau" data-req><option value="">Sélectionnez</option><option>Niveau collège</option><option>Niveau lycée</option><option>Baccalauréat</option><option>Bac+2</option><option>Bac+3 et plus</option><option>Autre</option></select><p class="err">Veuillez sélectionner votre niveau d'études.</p></div>
-            <div class="field"><label for="tel">Numéro de téléphone <i>*</i></label><div class="tel"><span>+212</span><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="6 12 34 56 78" data-req="phone"></div><p class="err">Numéro invalide (ex : 06 12 34 56 78).</p></div>
-            <div class="field"><label for="email">E-mail <i>*</i></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.com" data-req="email"><p class="err">Adresse e-mail invalide.</p></div>
-            <label class="check full"><input type="checkbox" name="sameWa" checked> Mon numéro WhatsApp est le même que mon numéro de téléphone</label>
-            <div class="field full f-wa" hidden><label for="wa">Numéro de WhatsApp <i>*</i></label><div class="tel"><span>+212</span><input id="wa" name="wa" type="tel" inputmode="tel" placeholder="6 12 34 56 78" data-req="phone"></div><p class="err">Numéro WhatsApp invalide.</p></div>
-            <div class="field full"><label for="message">Message <small>(facultatif)</small></label><textarea id="message" name="message" placeholder="Une question sur les horaires, la rentrée, les modalités…"></textarea></div>
+            <div class="field"><label for="prenom">Prénom <i>*</i></label><input id="prenom" name="prenom" autocomplete="given-name" placeholder="Sara" data-req><p class="err">Indiquez votre prénom.</p></div>
+            <div class="field"><label for="nom">Nom <i>*</i></label><input id="nom" name="nom" autocomplete="family-name" placeholder="Alami" data-req><p class="err">Indiquez votre nom.</p></div>
+            <div class="field full"><label for="tel">Téléphone (WhatsApp de préférence) <i>*</i></label><div class="tel"><span>🇲🇦 +212</span><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="6 12 34 56 78" data-req="phone"></div><p class="err">Numéro marocain invalide (ex : 06 12 34 56 78).</p></div>
+            <label class="check full"><input type="checkbox" name="sameWa" checked> Ce numéro est aussi mon WhatsApp</label>
+            <div class="field full f-wa" hidden><label for="wa">Numéro WhatsApp <i>*</i></label><div class="tel"><span>🇲🇦 +212</span><input id="wa" name="wa" type="tel" inputmode="tel" placeholder="6 12 34 56 78" data-req="phone"></div><p class="err">Numéro WhatsApp invalide.</p></div>
+            <div class="field"><label for="ville">Ville <i>*</i></label><input id="ville" name="ville" list="villes" autocomplete="address-level2" placeholder="Rabat" data-req><datalist id="villes"><option value="Rabat"><option value="Salé"><option value="Témara"><option value="Kénitra"><option value="Skhirat"><option value="Casablanca"></datalist><p class="err">Indiquez votre ville.</p></div>
+            <div class="field"><label for="niveau">Niveau d'études <i>*</i></label><select id="niveau" name="niveau" data-req><option value="">Sélectionnez</option><option>Niveau collège</option><option>Niveau lycée</option><option>Baccalauréat</option><option>Bac+2</option><option>Bac+3 et plus</option><option>Autre</option></select><p class="err">Sélectionnez votre niveau d'études.</p></div>
+            <div class="field full"><label for="email">E-mail <small>(facultatif — pour recevoir la confirmation)</small></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.com" data-req="email?"><p class="err">Adresse e-mail invalide.</p></div>
+            <details class="field full more"><summary>Ajouter une question ou un message <small>(facultatif)</small></summary><textarea id="message" name="message" placeholder="Horaires, date de rentrée, modalités…"></textarea></details>
           </div>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         </fieldset>
-        <button class="btn btn-block" type="submit">Envoyer ma pré-inscription <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <p class="legal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Gratuit et sans engagement. Vos informations restent confidentielles.</p>
+        <div class="assure">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> Agréée par l'État</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> Un conseiller vous rappelle</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Données confidentielles</span>
+        </div>
+        <button class="btn btn-sky btn-block submit-big" type="submit"><span>Recevoir le programme &amp; les tarifs</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="legal">Pré-inscription gratuite et sans engagement · Vous pouvez aussi <a data-wa data-place="form" style="color:var(--navy-2)">écrire sur WhatsApp</a></p>
       </form>
     </div>
     <aside class="form-aside">
@@ -102,16 +111,16 @@
           <li><p><b>Validation</b>Confirmation d'admission et finalisation de l'inscription.</p></li>
         </ol>
       </div>
-      <div class="aside-help rv r" style="--d:.1s">
+      <div class="aside-help rv r" data-session style="--d:.1s">
+        <span class="eyebrow">Prochaine rentrée</span>
+        <h3 style="font-size:24px;margin:10px 0 4px" data-session-label></h3>
+        <p style="margin:0">Places limitées · <b data-cd="short" style="color:var(--blue)"></b></p>
+      </div>
+      <div class="aside-help rv r" style="--d:.2s">
         <h3 style="font-size:22px">Une question ?</h3>
         <p>Notre équipe vous répond directement sur WhatsApp ou par téléphone.</p>
         <a class="btn btn-wa btn-block btn-sm" data-wa data-place="inscription"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.2-.2-.2-.5-.3z"/></svg> Écrire sur WhatsApp</a>
         <a class="btn btn-ghost btn-block btn-sm" href="tel:+212762575813" style="margin-top:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> 07 62 57 58 13</a>
-      </div>
-      <div class="aside-help rv r" data-session style="--d:.2s">
-        <span class="eyebrow">Prochaine rentrée</span>
-        <h3 style="font-size:24px;margin:10px 0 4px" data-session-label></h3>
-        <p style="margin:0">Places limitées · <b data-cd="short" style="color:var(--blue)"></b></p>
       </div>
     </aside>
   </div>
@@ -126,7 +135,7 @@
         <p>École Internationale d'Esthétique et de Cosmétologie. Établissement privé de formation professionnelle autorisé et agréé par l'État — n° 4/07/9/2003.</p>
         <div class="socials">
           <a href="https://www.facebook.com/esthepro.ecole/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
-          <a href="https://www.instagram.com/ecole.esthe.pro/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21 7a5.4 5.4 0 0 0-1.5-3.9A5.4 5.4 0 0 0 15.6 1.6C14.1 1.5 9.9 1.5 8.4 1.6A5.4 5.4 0 0 0 4.5 3.1 5.4 5.4 0 0 0 3 7c-.1 1.5-.1 5.7 0 7.2a5.4 5.4 0 0 0 1.5 3.9 5.4 5.4 0 0 0 3.9 1.5c1.5.1 5.7.1 7.2 0a5.4 5.4 0 0 0 3.9-1.5A5.4 5.4 0 0 0 21 14.2c.1-1.5.1-5.7 0-7.2z"/></svg></a>
+          <a href="https://www.instagram.com/ecole.esthe.pro/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
         </div>
       </div>
       <div>

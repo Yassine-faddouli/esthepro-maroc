@@ -272,52 +272,61 @@ DERMO = dict(
 
 # ---------------------------------------------------------------- INSCRIPTION
 def inscription():
-    picks = "".join(f'''<div class="opt"><input type="radio" name="formation" id="p{i}" value="{n}"><label for="p{i}"><b>{s}</b><small>{d}</small><em>{m}</em></label></div>''' for i,(n,s,d,m) in enumerate([
-      ("Formation Esthéticienne","Esthéticienne","Le parcours complet pour devenir esthéticienne professionnelle.","1 an · présentiel · diplômante"),
-      ("Formation Esthétique pour Adultes","Esthétique pour Adultes","Reconversion ou nouvelle compétence, sans quitter votre emploi.","6 mois · le samedi"),
-      ("Formation Dermo-Cosmétique","Dermo-Cosmétique","Conseil en pharmacie et parapharmacie : peau, actifs, INCI.","100 % à distance · Zoom")],1))
+    courses=[("Formation Esthéticienne","Esthéticienne","Devenir esthéticienne professionnelle.","1 an · présentiel · diplôme","visage"),
+      ("Formation Esthétique pour Adultes","Esthétique pour Adultes","Se reconvertir sans quitter son emploi.","6 mois · le samedi","adulte2"),
+      ("Formation Dermo-Cosmétique","Dermo-Cosmétique","Conseiller en pharmacie et parapharmacie.","100 % à distance · Zoom","comptoir")]
+    picks = "".join(f'''<div class="opt"><input type="radio" name="formation" id="p{i}" value="{n}"><label for="p{i}"><span class="pimg">{img(k,360,200,s)}</span><span class="ptxt"><b>{s}</b><small>{d}</small><em>{m}</em></span><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span></label></div>''' for i,(n,s,d,m,k) in enumerate(courses,1))
     body = f'''
 <body>
 {header('insc')}
 <main>
-<section class="page-hero" style="padding:0">
-  <div class="wrap" style="padding:64px 0 120px;text-align:center">
+<section class="page-hero insc-hero" style="padding:0">
+  <div class="wrap" style="padding:64px 0 130px;text-align:center">
     <div class="intro-anim">
       <nav class="crumbs" style="justify-content:center">{CR(HOME, "Pré-inscription")}</nav>
-      <h1 style="color:#fff;margin:16px auto 16px">Formulaire de <em>pré-inscription</em></h1>
-      <p class="lead" style="margin:0 auto;max-width:720px">Donnez vie à votre avenir dans l'esthétique ou la dermo-cosmétique. Remplissez ce formulaire en 2 minutes : notre conseiller pédagogique vous contacte pour vous présenter le programme et les modalités d'inscription.</p>
+      <h1 style="color:#fff;margin:6px auto 16px">Formulaire de <em>pré-inscription</em></h1>
+      <p class="lead" style="margin:0 auto;max-width:700px">Donnez vie à votre avenir dans l'esthétique ou la dermo-cosmétique. Remplissez ce formulaire : notre conseiller pédagogique vous rappelle avec le programme, le calendrier et les tarifs.</p>
+      <div class="insc-badges"><span>{ICON['clock']} 2 minutes</span><span>{ICON['shield']} École agréée par l'État</span><span>{ICON['heart']} Gratuit et sans engagement</span></div>
     </div>
   </div>
 </section>
-<section style="padding-top:0;margin-top:-80px">
+<section style="padding-top:0;margin-top:-90px">
   <div class="wrap insc-grid">
     <div class="form-wrap rv z">
+      <div class="fhead">
+        <div><b>Votre pré-inscription</b><span id="fstat">Étape 1 sur 2 · choisissez une formation</span></div>
+        <span class="fpct" id="fpct">0 %</span>
+      </div>
+      <div class="fprog"><i id="fbar"></i></div>
       <form data-lead="full" novalidate>
         <fieldset class="block">
-          <legend class="f-title"><span class="num-c">1</span>Choix de formation <span style="color:var(--sky)">*</span></legend>
-          <p class="f-sub">Sélectionnez la formation qui vous intéresse.</p>
+          <legend class="f-title"><span class="num-c">1</span>Quelle formation vous intéresse ?</legend>
+          <p class="f-sub">Un seul choix. Vous pourrez en parler avec votre conseiller.</p>
           <div class="pick">{picks}</div>
-          <label class="check unsure"><input type="radio" name="formation" value="Je ne sais pas encore"> Je ne sais pas encore, je souhaite être conseillé(e)</label>
-          <p class="group-err">Veuillez choisir une formation.</p>
+          <label class="unsure"><input type="radio" name="formation" value="Je ne sais pas encore"><span>Je ne sais pas encore — je souhaite être conseillé(e)</span></label>
+          <p class="group-err">Choisissez une formation pour continuer.</p>
         </fieldset>
         <fieldset class="block">
-          <legend class="f-title"><span class="num-c">2</span>Vos informations</legend>
-          <p class="f-sub">Les champs marqués d'un * sont obligatoires.</p>
+          <legend class="f-title"><span class="num-c">2</span>Où pouvons-nous vous joindre ?</legend>
+          <p class="f-sub">Les champs marqués d'un <i style="color:var(--sky);font-style:normal">*</i> sont obligatoires.</p>
           <div class="grid2">
-            <div class="field"><label for="prenom">Prénom <i>*</i></label><input id="prenom" name="prenom" autocomplete="given-name" data-req><p class="err">Veuillez indiquer votre prénom.</p></div>
-            <div class="field"><label for="nom">Nom <i>*</i></label><input id="nom" name="nom" autocomplete="family-name" data-req><p class="err">Veuillez indiquer votre nom.</p></div>
-            <div class="field"><label for="ville">Ville <i>*</i></label><input id="ville" name="ville" list="villes" autocomplete="address-level2" data-req><datalist id="villes"><option value="Rabat"><option value="Salé"><option value="Témara"><option value="Kénitra"><option value="Skhirat"><option value="Casablanca"></datalist><p class="err">Veuillez indiquer votre ville.</p></div>
-            <div class="field"><label for="niveau">Niveau d'études <i>*</i></label><select id="niveau" name="niveau" data-req><option value="">Sélectionnez</option><option>Niveau collège</option><option>Niveau lycée</option><option>Baccalauréat</option><option>Bac+2</option><option>Bac+3 et plus</option><option>Autre</option></select><p class="err">Veuillez sélectionner votre niveau d'études.</p></div>
-            <div class="field"><label for="tel">Numéro de téléphone <i>*</i></label><div class="tel"><span>+212</span><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="6 12 34 56 78" data-req="phone"></div><p class="err">Numéro invalide (ex : 06 12 34 56 78).</p></div>
-            <div class="field"><label for="email">E-mail <i>*</i></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.com" data-req="email"><p class="err">Adresse e-mail invalide.</p></div>
-            <label class="check full"><input type="checkbox" name="sameWa" checked> Mon numéro WhatsApp est le même que mon numéro de téléphone</label>
-            <div class="field full f-wa" hidden><label for="wa">Numéro de WhatsApp <i>*</i></label><div class="tel"><span>+212</span><input id="wa" name="wa" type="tel" inputmode="tel" placeholder="6 12 34 56 78" data-req="phone"></div><p class="err">Numéro WhatsApp invalide.</p></div>
-            <div class="field full"><label for="message">Message <small>(facultatif)</small></label><textarea id="message" name="message" placeholder="Une question sur les horaires, la rentrée, les modalités…"></textarea></div>
+            <div class="field"><label for="prenom">Prénom <i>*</i></label><input id="prenom" name="prenom" autocomplete="given-name" placeholder="Sara" data-req><p class="err">Indiquez votre prénom.</p></div>
+            <div class="field"><label for="nom">Nom <i>*</i></label><input id="nom" name="nom" autocomplete="family-name" placeholder="Alami" data-req><p class="err">Indiquez votre nom.</p></div>
+            <div class="field full"><label for="tel">Téléphone (WhatsApp de préférence) <i>*</i></label><div class="tel"><span>🇲🇦 +212</span><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="6 12 34 56 78" data-req="phone"></div><p class="err">Numéro marocain invalide (ex : 06 12 34 56 78).</p></div>
+            <label class="check full"><input type="checkbox" name="sameWa" checked> Ce numéro est aussi mon WhatsApp</label>
+            <div class="field full f-wa" hidden><label for="wa">Numéro WhatsApp <i>*</i></label><div class="tel"><span>🇲🇦 +212</span><input id="wa" name="wa" type="tel" inputmode="tel" placeholder="6 12 34 56 78" data-req="phone"></div><p class="err">Numéro WhatsApp invalide.</p></div>
+            <div class="field"><label for="ville">Ville <i>*</i></label><input id="ville" name="ville" list="villes" autocomplete="address-level2" placeholder="Rabat" data-req><datalist id="villes"><option value="Rabat"><option value="Salé"><option value="Témara"><option value="Kénitra"><option value="Skhirat"><option value="Casablanca"></datalist><p class="err">Indiquez votre ville.</p></div>
+            <div class="field"><label for="niveau">Niveau d'études <i>*</i></label><select id="niveau" name="niveau" data-req><option value="">Sélectionnez</option><option>Niveau collège</option><option>Niveau lycée</option><option>Baccalauréat</option><option>Bac+2</option><option>Bac+3 et plus</option><option>Autre</option></select><p class="err">Sélectionnez votre niveau d'études.</p></div>
+            <div class="field full"><label for="email">E-mail <small>(facultatif — pour recevoir la confirmation)</small></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.com" data-req="email?"><p class="err">Adresse e-mail invalide.</p></div>
+            <details class="field full more"><summary>Ajouter une question ou un message <small>(facultatif)</small></summary><textarea id="message" name="message" placeholder="Horaires, date de rentrée, modalités…"></textarea></details>
           </div>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         </fieldset>
-        <button class="btn btn-block" type="submit">Envoyer ma pré-inscription {A}</button>
-        <p class="legal">{ICON['lock']} Gratuit et sans engagement. Vos informations restent confidentielles.</p>
+        <div class="assure">
+          <span>{ICON['shield']} Agréée par l'État</span><span>{ICON['phone']} Un conseiller vous rappelle</span><span>{ICON['lock']} Données confidentielles</span>
+        </div>
+        <button class="btn btn-sky btn-block submit-big" type="submit"><span>Recevoir le programme &amp; les tarifs</span> {A}</button>
+        <p class="legal">Pré-inscription gratuite et sans engagement · Vous pouvez aussi <a data-wa data-place="form" style="color:var(--navy-2)">écrire sur WhatsApp</a></p>
       </form>
     </div>
     <aside class="form-aside">
@@ -329,16 +338,16 @@ def inscription():
           <li><p><b>Validation</b>Confirmation d'admission et finalisation de l'inscription.</p></li>
         </ol>
       </div>
-      <div class="aside-help rv r" style="--d:.1s">
+      <div class="aside-help rv r" data-session style="--d:.1s">
+        <span class="eyebrow">Prochaine rentrée</span>
+        <h3 style="font-size:24px;margin:10px 0 4px" data-session-label></h3>
+        <p style="margin:0">Places limitées · <b data-cd="short" style="color:var(--blue)"></b></p>
+      </div>
+      <div class="aside-help rv r" style="--d:.2s">
         <h3 style="font-size:22px">Une question ?</h3>
         <p>Notre équipe vous répond directement sur WhatsApp ou par téléphone.</p>
         <a class="btn btn-wa btn-block btn-sm" data-wa data-place="inscription">{ICON['wa']} Écrire sur WhatsApp</a>
         <a class="btn btn-ghost btn-block btn-sm" href="tel:+212762575813" style="margin-top:10px">{ICON['phone']} 07 62 57 58 13</a>
-      </div>
-      <div class="aside-help rv r" data-session style="--d:.2s">
-        <span class="eyebrow">Prochaine rentrée</span>
-        <h3 style="font-size:24px;margin:10px 0 4px" data-session-label></h3>
-        <p style="margin:0">Places limitées · <b data-cd="short" style="color:var(--blue)"></b></p>
       </div>
     </aside>
   </div>

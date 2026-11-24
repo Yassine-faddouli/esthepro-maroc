@@ -134,6 +134,7 @@
         const v=el.value.trim();
         if (el.dataset.req==='phone') bad(el,!norm(v));
         else if (el.dataset.req==='email') bad(el,!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v));
+        else if (el.dataset.req==='email?') bad(el,!!v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v));
         else bad(el,!v);
       });
       if (errs.length){ const el=errs[0]; scrollTo({top:el.getBoundingClientRect().top+scrollY-170,behavior:'smooth'}); setTimeout(()=>el.focus({preventScroll:true}),400); return; }
@@ -256,6 +257,44 @@
     if(!reduce) heads.forEach(h=>{ if(!h.classList.contains('words-in')&&!h.closest('.intro-anim')&&h.getBoundingClientRect().top<vh*0.95) h.classList.add('words-in'); }); };
   addEventListener('scroll',()=>{ if(!tk){ tk=true; requestAnimationFrame(sweep);} },{passive:true});
   setInterval(sweep,800);
+
+  /* ---------------- Form UX: progress, live checks, phone format, draft ---------------- */
+  $$('form[data-lead="full"]').forEach(form=>{
+    const bar=$('#fbar'), pct=$('#fpct'), stat=$('#fstat');
+    const valid=el=>{ const v=el.value.trim(), t=el.dataset.req;
+      if(t==='phone') return !!norm(v); if(t==='email?') return !v||/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); if(t==='email') return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); return !!v; };
+    const reqs=()=>$$('[data-req]',form).filter(el=>!el.closest('[hidden]') && el.dataset.req!=='email?');
+    const update=()=>{
+      const hasF=!!form.querySelector('[name=formation]:checked');
+      const list=reqs(); const done=list.filter(valid).length;
+      const p=Math.round(((hasF?1:0)+done)/(list.length+1)*100);
+      if(bar) bar.style.width=p+'%'; if(pct) pct.textContent=p+' %';
+      if(stat) stat.textContent = !hasF ? 'Étape 1 sur 2 · choisissez une formation' : (p<100 ? 'Étape 2 sur 2 · vos coordonnées' : 'Tout est prêt ✓ envoyez votre demande');
+    };
+    // phone formatting "6 12 34 56 78"
+    $$('input[type=tel]',form).forEach(i=>i.addEventListener('input',()=>{
+      let d=i.value.replace(/\D/g,''); if(d.startsWith('212')) d=d.slice(3); if(d.startsWith('0')) d=d.slice(1); d=d.slice(0,9);
+      const parts=[d.slice(0,1),d.slice(1,3),d.slice(3,5),d.slice(5,7),d.slice(7,9)].filter(Boolean); i.value=parts.join(' ');
+    }));
+    // live validation feedback
+    $$('[data-req]',form).forEach(el=>{
+      const f=el.closest('.field');
+      el.addEventListener('blur',()=>{ if(!f||!el.value.trim()) return; const ok=valid(el); f.classList.toggle('is-ok',ok&&!!el.value.trim()); f.classList.toggle('invalid',!ok); });
+      el.addEventListener('input',()=>{ if(f&&f.classList.contains('invalid')&&valid(el)){ f.classList.remove('invalid'); f.classList.add('is-ok'); } update(); });
+      el.addEventListener('change',update);
+    });
+    // after choosing a course, glide to the contact fields
+    $$('[name=formation]',form).forEach(r=>r.addEventListener('change',()=>{ update(); try{ if(!form.dataset.jumped){ form.dataset.jumped=1; const t=$('#prenom'); setTimeout(()=>{ scrollTo({top:t.getBoundingClientRect().top+scrollY-200,behavior:reduce?'auto':'smooth'}); t.focus({preventScroll:true}); },350);} }catch(e){} }));
+    // draft autosave (this browser only)
+    const KEY='ep_draft';
+    try{ const d=JSON.parse(localStorage.getItem(KEY)||'{}'); Object.entries(d).forEach(([k,v])=>{ const el=form.elements[k]; if(!el||k==='website') return;
+      if(el instanceof RadioNodeList){ if(!pre){ const r=[...el].find(x=>x.value===v); if(r) r.checked=true; } } else if(el.type==='checkbox') el.checked=!!v; else if(!el.value) el.value=v; });
+      const same=form.querySelector('[name=sameWa]'); if(same) form.querySelector('.f-wa').hidden=same.checked;
+    }catch(e){}
+    form.addEventListener('input',()=>{ try{ const o={}; new FormData(form).forEach((v,k)=>{ if(k!=='website') o[k]=v; }); o.sameWa=form.querySelector('[name=sameWa]').checked; localStorage.setItem(KEY,JSON.stringify(o)); }catch(e){} });
+    form.addEventListener('submit',()=>{ setTimeout(()=>{ if(!form.querySelector('.field.invalid')&&!form.querySelector('.group-err.show')){ try{localStorage.removeItem(KEY)}catch(e){} } },50); });
+    update();
+  });
 
   /* ---------------- Page Merci ---------------- */
   const thanks = $('#thanks');

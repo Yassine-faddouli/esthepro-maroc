@@ -63,7 +63,7 @@ ICON = {
  "tram":'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 12h14M9 18l-2 3M15 18l2 3M9 4l1-2h4l1 2"/></svg>',
  "lock":'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
  "fb":'<svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg>',
- "ig":'<svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21 7a5.4 5.4 0 0 0-1.5-3.9A5.4 5.4 0 0 0 15.6 1.6C14.1 1.5 9.9 1.5 8.4 1.6A5.4 5.4 0 0 0 4.5 3.1 5.4 5.4 0 0 0 3 7c-.1 1.5-.1 5.7 0 7.2a5.4 5.4 0 0 0 1.5 3.9 5.4 5.4 0 0 0 3.9 1.5c1.5.1 5.7.1 7.2 0a5.4 5.4 0 0 0 3.9-1.5A5.4 5.4 0 0 0 21 14.2c.1-1.5.1-5.7 0-7.2z"/></svg>',
+ "ig":'<svg class="ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>',
 }
 A = ICON["arrow"]
 
